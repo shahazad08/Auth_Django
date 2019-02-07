@@ -29,7 +29,20 @@ ALLOWED_HOSTS = []
 AUTH_USER_MODEL = "users.User"
 # Application definition
 
+#Email verification
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'sk.shahazad@gmail.com'
+EMAIL_HOST_PASSWORD = 'sabjitarkari'
+EMAIL_PORT = 587
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # During development only
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
 import datetime
 
 JWT_AUTH = {
@@ -43,6 +56,7 @@ JWT_AUTH = {
 
 INSTALLED_APPS = [
     'django.contrib.auth',
+    # 'django.admin_view_permission',
     'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -56,7 +70,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
